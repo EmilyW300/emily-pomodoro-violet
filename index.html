@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Violet Pomodoro Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card" aria-label="Pomodoro Timer">
+      <p class="eyebrow">Gentle Focus</p>
+      <h1 class="title">Violet Pomodoro</h1>
+      <p class="subtitle">25 minutes of calm productivity</p>
+      <div class="timer" aria-live="polite">
+        <span id="time-display">25:00</span>
+      </div>
+      <div class="controls" aria-label="Timer controls">
+        <button id="start-btn" type="button" class="btn primary">Start</button>
+        <button id="pause-btn" type="button" class="btn">Pause</button>
+        <button id="reset-btn" type="button" class="btn ghost">Reset</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
