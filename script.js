@@ -1,4 +1,4 @@
-let time = 25 * 60;
+let time = 25 * 60; // 25 minutes
 let timerInterval = null;
 let isRunning = false;
 
@@ -7,13 +7,7 @@ const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
 
-const modal = document.getElementById("modal");
-const saveLogBtn = document.getElementById("saveLog");
-const closeModal = document.getElementById("closeModal");
-const notesInput = document.getElementById("notesInput");
-const topicInput = document.getElementById("topicInput");
-
-// 顯示時間
+// 渲染時間
 function updateDisplay() {
     let min = Math.floor(time / 60);
     let sec = time % 60;
@@ -21,11 +15,7 @@ function updateDisplay() {
         `${min.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
 }
 
-updateDisplay();
-
-// =======================
-//      Start
-// =======================
+// 開始
 startBtn.addEventListener("click", () => {
     if (isRunning) return;
     isRunning = true;
@@ -36,19 +26,19 @@ startBtn.addEventListener("click", () => {
             updateDisplay();
         } else {
             clearInterval(timerInterval);
+            alert("🎉 Time's up! Good job Emily!");
             isRunning = false;
-            openModal();   // **時間到 → 開啟心得視窗**
         }
     }, 1000);
 });
 
-// Pause
+// 暫停
 pauseBtn.addEventListener("click", () => {
     clearInterval(timerInterval);
     isRunning = false;
 });
 
-// Reset
+// 重置
 resetBtn.addEventListener("click", () => {
     clearInterval(timerInterval);
     time = 25 * 60;
@@ -56,45 +46,5 @@ resetBtn.addEventListener("click", () => {
     isRunning = false;
 });
 
-// =======================
-//   Modal Functions
-// =======================
-function openModal() {
-    modal.style.display = "flex";
-}
-
-closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-// =======================
-//   Save to logs.json
-// =======================
-saveLogBtn.addEventListener("click", async () => {
-    const entry = {
-        date: new Date().toLocaleDateString("zh-Hant"),
-        topic: topicInput.value || "未填主題",
-        duration: 25,
-        notes: notesInput.value
-    };
-
-    // 將紀錄送到 GitHub（使用 GitHub API）
-    await fetch("logs.json")
-        .then(r => r.json())
-        .then(async (data) => {
-            data.push(entry);
-
-            await fetch("logs.json", {
-                method: "PUT",
-                body: JSON.stringify(data, null, 2),
-                headers: { "Content-Type": "application/json" }
-            });
-        });
-
-    alert("✔ 已儲存你的心得！");
-    modal.style.display = "none";
-
-    // 重置計時器
-    time = 25 * 60;
-    updateDisplay();
-});
+// 初始化畫面
+updateDisplay();
