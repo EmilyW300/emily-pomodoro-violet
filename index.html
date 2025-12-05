@@ -8,14 +8,27 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>🌸 Emily’s Violet Pomodoro</h1>
-        <div id="timer">25:00</div>
+    <div class="page">
+        <div class="container">
+            <h1>🌸 Emily’s Violet Pomodoro</h1>
+            <div id="timer">25:00</div>
 
-        <div class="buttons">
-            <button id="startBtn">Start</button>
-            <button id="pauseBtn">Pause</button>
-            <button id="resetBtn">Reset</button>
+            <div class="buttons">
+                <button id="startBtn">Start</button>
+                <button id="pauseBtn">Pause</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <div class="insights-card">
+            <h2>💡 今日 insights</h2>
+            <p class="insights-helper">請輸入 3 個今日的 insights，會自動附上日期存入 Google Sheet。</p>
+            <form id="insightsForm" class="insights-form">
+                <label for="insightsInput" class="sr-only">input your 3 ininsights</label>
+                <textarea id="insightsInput" name="insights" rows="6" placeholder="input your 3 ininsights"></textarea>
+                <button type="submit" id="insightsSubmit">儲存到 Google Sheet</button>
+                <p id="insightsStatus" class="insights-status" aria-live="polite"></p>
+            </form>
         </div>
     </div>
 
